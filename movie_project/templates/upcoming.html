@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>개봉 예정작 - Movie Insight</title>
+    <style>
+        body { font-family: 'Malgun Gothic', sans-serif; max-width: 700px; margin: 0 auto; padding: 40px; background-color: #f8f9fa; }
+        .container { background: white; padding: 50px; border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; margin-bottom: 50px; font-size: 35px; }
+        h2 { font-size: 20px; padding-left: 15px; margin-bottom: 25px; color: #333; border-left: 5px solid #3498db; }
+        .movie-item { padding: 18px 10px; border-bottom: 1px solid #f1f1f1; color: #444; font-size: 16px; display: flex; justify-content: space-between; }
+        .btn-back { display: block; text-align: center; margin-top: 40px; color: #888; text-decoration: none; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📅 개봉 예정작</h1>
+        <div class="section">
+            <h2>곧 개봉하는 영화 <span style="font-weight:normal; font-size:14px; color:#999;">({{ date }} 기준)</span></h2>
+            <div class="movie-list">
+                {% if upcoming and upcoming|length > 0 %}
+                    {% for movie in upcoming %}
+                    <div class="movie-item">{{ movie }}</div>
+                    {% endfor %}
+                {% else %}
+                    <div style="text-align:center; padding:50px; color:#999;">
+                        현재 개봉 예정 데이터를 찾을 수 없습니다.<br>
+                        <small>네이버 검색 결과 형식이 변경되었을 수 있습니다.</small>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <a href="/" class="btn-back">🏠 메인으로 돌아가기</a>
+    </div>
+</body>
+</html>

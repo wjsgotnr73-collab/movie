@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Insight</title>
+    <style>
+        body { font-family: 'Malgun Gothic', sans-serif; max-width: 700px; margin: 0 auto; padding: 40px; background-color: #f8f9fa; }
+        .container { background: white; padding: 50px; border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; margin-bottom: 10px; font-size: 35px; }
+        .current-date { text-align: center; color: #888; margin-bottom: 50px; font-size: 15px; }
+        .section { margin-bottom: 30px; }
+        h2 { font-size: 20px; padding-left: 15px; margin-bottom: 25px; color: #333; border-left: 5px solid #ff4757; }
+        .movie-item { display: flex; align-items: center; padding: 18px 10px; border-bottom: 1px solid #f1f1f1; }
+        .rank { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold; color: white; font-size: 13px; background: #ff4757; }
+        .title { font-weight: bold; color: #444; font-size: 16px; }
+        .btn-container { text-align: center; margin-top: 40px; display: flex; justify-content: center; gap: 15px; }
+        .btn { display: inline-block; padding: 15px 25px; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; font-size: 15px; }
+        .btn-upcoming { background-color: #3498db; }
+        .btn-ratings { background-color: #2ecc71; }
+        .btn:hover { transform: scale(1.05); opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 Movie Insight</h1>
+        <p class="current-date">기준일: {{ date }}</p>
+        <div class="section">
+            <h2>박스오피스 TOP 10</h2>
+            <div class="movie-list">
+                {% for title in box_office %}
+                <div class="movie-item">
+                    <div class="rank">{{ loop.index }}</div>
+                    <div class="title">{{ title }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="btn-container">
+            <a href="/upcoming" class="btn btn-upcoming">🗓️ 개봉 예정작</a>
+            <a href="/ratings" class="btn btn-ratings">⭐ 영화 평점 보기</a>
+        </div>
+    </div>
+</body>
+</html>
